@@ -12,15 +12,13 @@ Vaibhav Kale:
 - Home Page ( Landing Page ) NavBar Footer
 
 Rittik Haldar :
-- 
+- Cart and payment page
 
 Bhavik Dholu:
-- 
+- Admin Page
 
 Avinash patel: 
-
 - Backend api
-- Admin Page
 
 Sanjay Rathva :
 
