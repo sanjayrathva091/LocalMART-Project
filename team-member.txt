@@ -1,0 +1,28 @@
+Team Member:
+
+- Bhavik Dholu
+- Vaibhav Kale
+- Rittik Haldar
+- Avinash Patel
+- Sanjay Rathva (Team Lead)
+
+
+Work Distributions :
+Vaibhav Kale:
+- Home Page ( Landing Page ) NavBar Footer
+
+Rittik Haldar :
+- 
+
+Bhavik Dholu:
+- 
+
+Avinash patel: 
+
+- Backend api
+- Admin Page
+
+Sanjay Rathva :
+
+- Product details
+- Single Product Page
