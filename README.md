@@ -3,7 +3,7 @@
 
 **Introduction**
 ---
-This is our Sixth Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of sixth unit where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in sixth unit we have learnt Node.js And Express for Backend And Mongoose And MongoDB For DataBase.
+This is our Sixth Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of sixth unit where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in sixth unit we have learnt Node.js And Express for Backend And Mongoose And MongoDB For DataBase. And in my team there are 5 members Vaibhav Kale, Rittik Haldar, Avinash Patel, Bhavik Dholu, And Sanjay Rathva.
 
 <h3>About My Site</h3>
 
