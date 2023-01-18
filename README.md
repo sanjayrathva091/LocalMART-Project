@@ -28,9 +28,9 @@ LocalMART is India's largest online B2B marketplace, connecting buyers with supp
 | ----------------- | ------------------------------------------------------------------ |
 | Avinash Patel | All backend, Sign Up, Sign In Page And Deployment |
 | Vaibhav Kale | Home Page, Navbar And Footer |
-| Rittik haldar | Cart Page |
-| Rahul | Beauty Page |
-| Manoj Mogal | Men's Page, Women Page, And Kids Page |
+| Rittik haldar | Cart And Payment Page |
+| Bhavik Dholu | Admin Page |
+| Sanjay Rathva | Product Page And Product Detail Page |
 
 ## Features
 
