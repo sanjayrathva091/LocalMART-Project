@@ -38,10 +38,10 @@ LocalMART is India's largest online B2B marketplace, connecting buyers with supp
 | ----------------- | ------------------------------------------------------------------ |
 | 1 | User signup and Login |
 | 2 | Products Page with Filter and Sort Functionalities |
-| 3 | Dynamic add to cart feature |
+| 3 | Add to cart feature |
 | 4 | Dynamic cart page using Redux |
-| 5 | Admin Page |
-| 6 | Dummy payment using UPI-Paytm |
+| 5 | Admin page with many features|
+| 6 | Dummy payment using UPI-Payment |
 
   **Sample Page Images**
   ---
