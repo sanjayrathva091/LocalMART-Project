@@ -18,7 +18,7 @@ Bhavik Dholu:
 - Admin Page
 
 Avinash patel: 
-- Backend api
+- Backend api, Sign In And Sign Up Page
 
 Sanjay Rathva :
 
