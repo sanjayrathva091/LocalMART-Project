@@ -45,7 +45,7 @@ LocalMART is India's largest online B2B marketplace, connecting buyers with supp
 
   **Sample Page Images**
   ---
-  
+<!--   
   **1) Home Page**
   ---
   <a href="https://ibb.co/pXrvSWs"><img src="https://i.ibb.co/12Jfksp/Screenshot-20221219-014333.png" alt="Screenshot-20221219-014333" border="0"></a>
@@ -69,4 +69,4 @@ LocalMART is India's largest online B2B marketplace, connecting buyers with supp
 
   **6) Payment Page**
   ---
-<img src="https://miro.medium.com/max/1400/1*8lOoLP2q-pJVEUW7Z1vdwQ.png"></img>
+<img src="https://miro.medium.com/max/1400/1*8lOoLP2q-pJVEUW7Z1vdwQ.png"></img> -->
