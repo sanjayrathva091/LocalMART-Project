@@ -3,8 +3,8 @@
 
 **Introduction**
 ---
-This is our Fifth Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of fifth unit where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in fifth unit we have learnt React and Redux for Front-end and state management respectively.
-Awake Fashion is India’s leading fashion destination for the latest trends. Part of Dubai-based retail and hospitality The Landmark Group, Lifestyle brings multiple categories including men's, women's, and kids’ apparel, footwear, handbags, fashion accessories, and beauty under the convenience of a single roof. 
+This is our Sixth Construct Week Project at Masai School's Full Stack Web Development Course. We are currently at the end of sixth unit where we need to make projects as per mastery based progression environment of Masai School after learnig certain tech-tools and in sixth unit we have learnt Node.js And Express for Backend And Mongoose And MongoDB For DataBase.
+LocalMART is India's largest online B2B marketplace, connecting buyers with suppliers. With 60% market share of the online B2B Classified space in India. 
 ##  Tech-stack used
   
    ```
@@ -12,15 +12,19 @@ Awake Fashion is India’s leading fashion destination for the latest trends. Pa
    
    State Management : Redux
    
-   DataBase   : JSON
+   Backend : Node JS, Express JS
+   
+   DataBase   : MongoDB, Mongoose
+   
+   Deployment : Vercel
    ```
  ## Team members and contribution
 
  | Team Member            | Contribution                                                              |
 | ----------------- | ------------------------------------------------------------------ |
-| Avinash Patel | Home Page with Sliders and Product API |
-| Sagar Wankhade | Signup, Login Page And Cart Page |
-| Abhishek | Product's Detailed Page, Admin Page, And Shop Later Page |
+| Avinash Patel | All backend, Sign Up, Sign In Page And Deployment |
+| Vaibhav Kale | Home Page, Navbar And Footer |
+| Rittik haldar | Cart Page |
 | Rahul | Beauty Page |
 | Manoj Mogal | Men's Page, Women Page, And Kids Page |
 
