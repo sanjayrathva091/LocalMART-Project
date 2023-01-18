@@ -43,9 +43,9 @@ LocalMART is India's largest online B2B marketplace, connecting buyers with supp
 | 5 | Admin page with many features|
 | 6 | Dummy payment using UPI-Payment |
 
+  <!--
   **Sample Page Images**
-  ---
-<!--   
+  --- 
   **1) Home Page**
   ---
   <a href="https://ibb.co/pXrvSWs"><img src="https://i.ibb.co/12Jfksp/Screenshot-20221219-014333.png" alt="Screenshot-20221219-014333" border="0"></a>
