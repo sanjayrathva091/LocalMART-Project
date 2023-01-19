@@ -1,48 +1,53 @@
-import React, { useState } from 'react'
+import React, { createContext, useReducer, useEffect} from 'react';
 import "./cartPage.css";
-import { Scrollbars } from 'react-custom-scrollbars-2';
-import Items from './Items';
+import ContextCart from './ContextCart';
 import { products } from './products';
+import { reducer } from "./reducer";
 
+export const CartContext = createContext();
+
+const initialState = {
+  item: products,
+  totalAmount: 0,
+  totalItem: 0,
+};
 const Cart = () => {
+  // const [item, useItem] = useState(products);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [item, useItem] = useState(products)
+  const removeItem = (id) => {
+    return dispatch({
+      type: "REMOVE_ITEM",
+      payload: id,
+    });
+  };
+
+  const clearCart = () => {
+    return dispatch({ type: "CLEAR_CART" });
+  };
+
+ const increment = (id) => {
+    return dispatch({
+      type: "INCREMENT",
+      payload: id,
+    });
+  };
+
+  const decrement = (id) => {
+    return dispatch({
+      type: "DECREMENT",
+      payload: id,
+    });
+  };  
+
+  useEffect(() => {
+    dispatch({ type: "GET_TOTAL" });
+  }, [state.item]);
 
   return (
-    <>
-      <header>
-        <div className='continue-shopping'>
-          <img src="./images/arrow.png" alt="arrow" className='arrow-icon' />
-          <h3>Continue Shopping</h3>
-        </div>
-        <div className='cart-icon'>
-          <img src="./images/cart.png" alt="cart" />
-          <p>0</p>
-        </div>
-      </header>
-      <section className='main-cart-section'>
-        <h1>Shopping Cart</h1>
-        <p className='total-items'>You have <span className='total-items-count'> 0 </span> items in shoppong cart</p>
-        <div className='cart-items'>
-          <div className='cart-items-container'>
-            <Scrollbars>
-
-              {
-                item.map((curItem) => {
-                  return  <Items key={curItem.id} {...curItem} />
-                })
-              }
-
-             
-            </Scrollbars>
-          </div>
-        </div>
-        <div className='card-total'>
-          <h3>Card Total : <span>000rs</span></h3>
-          <button>Checkout</button>
-        </div>
-      </section>
-    </>
+    <CartContext.Provider value={{ ...state, removeItem, clearCart, increment, decrement }}>
+      <ContextCart />
+    </CartContext.Provider>
   )
 }
 
