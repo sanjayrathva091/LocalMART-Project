@@ -1,12 +1,15 @@
 import React from "react";
+import './App.css';
 import Cart from "./components/Cart";
+import Admin from "./pages/routes/Admin";
 
 
 const App = () => {
   return (
-    <>
-      <Cart />
-    </>
+    <div className="App">
+      {/* <Cart /> */}
+      <Admin />
+    </div>
   );
 };
 
