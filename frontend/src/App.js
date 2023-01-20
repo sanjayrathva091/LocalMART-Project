@@ -1,14 +1,13 @@
 import React from "react";
 import './App.css';
-import Cart from "./components/Cart";
-import Admin from "./pages/routes/Admin";
+import Plywood from "./pages/Plywood";
+
 
 
 const App = () => {
   return (
     <div className="App">
-      {/* <Cart /> */}
-      <Admin />
+      <Plywood />
     </div>
   );
 };

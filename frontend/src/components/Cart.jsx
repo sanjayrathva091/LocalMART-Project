@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useEffect} from 'react';
+import React, { createContext, useReducer, useEffect } from "react";
 import "./cartPage.css";
-import ContextCart from './ContextCart';
-import { products } from './products';
+import ContextCart from "./ContextCart";
+import { products } from "./products";
 import { reducer } from "./reducer";
 
 export const CartContext = createContext();
@@ -11,6 +11,7 @@ const initialState = {
   totalAmount: 0,
   totalItem: 0,
 };
+
 const Cart = () => {
   // const [item, useItem] = useState(products);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -26,7 +27,7 @@ const Cart = () => {
     return dispatch({ type: "CLEAR_CART" });
   };
 
- const increment = (id) => {
+  const increment = (id) => {
     return dispatch({
       type: "INCREMENT",
       payload: id,
@@ -38,17 +39,19 @@ const Cart = () => {
       type: "DECREMENT",
       payload: id,
     });
-  };  
+  };
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
   }, [state.item]);
 
   return (
-    <CartContext.Provider value={{ ...state, removeItem, clearCart, increment, decrement }}>
+    <CartContext.Provider
+      value={{ ...state, removeItem, clearCart, increment, decrement }}
+    >
       <ContextCart />
     </CartContext.Provider>
-  )
-}
+  );
+};
 
 export default Cart;
