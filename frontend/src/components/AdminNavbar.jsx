@@ -35,11 +35,11 @@ function AdminNavbar() {
   }
 
   return (
-    <Box bg="blue.900" p="5px" pl="20px" pr="20px" >
+    <Box bg="blue.900" p="5px" pl="20px" pr="20px">
       <Flex justifyContent={"space-between"} align="center">
         <Hide above="lg">
         <Box>
-          <Button colorScheme="red" ref={btnRef} onClick={onOpen}>
+          <Button colorScheme="blue" ref={btnRef} onClick={onOpen}>
             <HamburgerIcon />
           </Button>
           <Drawer placement={"left"} onClose={onClose} isOpen={isOpen} finalFocusRef={btnRef}>
@@ -50,17 +50,16 @@ function AdminNavbar() {
               <DrawerBody>
                 <Button w="100%" mt="10px" onClick={()=>navigation("/")}>Dashboard</Button>
                 <Button w="100%" mt="10px" onClick={()=>navigation("/addproduct")}>Add Product</Button>
-                <Button w="100%" mt="10px" onClick={()=>navigation("/removeproduct")}>Remove Product</Button>
+                <Button w="100%" mt="10px" onClick={()=>navigation("/manageproduct")}>Manage Product</Button>
                 <Button w="100%" mt="10px" onClick={()=>navigation("/manageorder")}>Manage Order</Button>
-                <Button w="100%" mt="10px" onClick={()=>navigation("/")}>Manage Payment</Button>
-                <Button w="100%" mt="10px" onClick={()=>navigation("/")}>Check Feedback</Button>
+                <Button w="100%" mt="10px" onClick={()=>navigation("/manageuser")}>Manage User</Button>
               </DrawerBody>
             </DrawerContent>
           </Drawer>
         </Box>
         </Hide>
         <Box>
-          <Image src={logo} alt="logo" w={{base:"150px",sm:"250px"}} h={{base:"30px",sm:"50px"}}/>
+          <Image src={logo} alt="logo" w={{base:"120px",sm:"250px"}} h={{base:"25px",sm:"50px"}}/>
         </Box>
         <Box>
           <Menu>
