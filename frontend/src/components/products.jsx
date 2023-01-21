@@ -23,12 +23,5 @@ export const products = [
         price: 87,
         quantity: 1,
     },
-    {
-      id: 4,
-      title: "6 mm Modi Guard BWR Grade Gurjan Plywood Board, For Furniture",
-      Color: "Black",
-      img: "https://5.imimg.com/data5/DA/FS/MY-1539605/gurjan-elite-waterproof-plywood-500x500.png",
-      price: 97,
-      quantity: 1,
-  },
+    
   ];

@@ -3,6 +3,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import Items from "./Items";
 import { CartContext } from "./Cart";
 import {Link} from "react-router-dom";
+
 const ContextCart = () => {
   const { item, clearCart, totalItem, totalAmount } = useContext(CartContext);
 
