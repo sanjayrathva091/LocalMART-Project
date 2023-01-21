@@ -33,7 +33,7 @@ const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
-    <div>
+    <Box position={"sticky"} top={0} left={0} zIndex={100} w="100%">
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
@@ -108,7 +108,7 @@ const Navbar = () => {
           </Box>
         ) : null}
       </Box>
-    </div>
+    </Box>
   );
 };
 
