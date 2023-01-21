@@ -43,7 +43,6 @@ const Navbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-
           <HStack spacing={8} alignItems={"center"}>
             <Box>
               <Link to="/">
@@ -64,7 +63,6 @@ const Navbar = () => {
               ))}
             </HStack>
           </HStack>
-
           {/* end of all links */}
           <Flex alignItems={"center"} gap={10}>
             <Link to="/cart">
