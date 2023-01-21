@@ -23,7 +23,7 @@ const Featured = () => {
     {
       icon: BsShop,
       title: "Sell on LocalMART",
-      dis: "Reach out to more than 4 crore buyers.Sell with us.",
+      dis: "Reach out to more than 4 crore buyers.Sell with LocalMART.",
       btn: "Start Selling",
     },
     {
@@ -40,8 +40,15 @@ const Featured = () => {
     },
   ];
   return (
-    <div my="50px">
-      <Heading>More for you</Heading>
+    <Box
+      mt={14}
+      borderBottom={10}
+      borderStyle={"solid"}
+      borderColor={"gray.100"}
+    >
+      <Text fontSize={"3xl"} fontWeight={700} textAlign={"left"} ml={20} as="u">
+        More for You
+      </Text>
       <Box
         w="90%"
         m="auto"
@@ -76,7 +83,7 @@ const Featured = () => {
           </VStack>
         ))}
       </Box>
-    </div>
+    </Box>
   );
 };
 

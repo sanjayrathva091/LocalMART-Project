@@ -7,7 +7,7 @@ import { BiMobile } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <div>
+    <Box my={10}>
       <Flex
         textAlign={"center"}
         w={"80%"}
@@ -17,8 +17,10 @@ const Footer = () => {
         flexDirection={{ base: "column", md: "column", lg: "row" }}
       >
         <Text
-          fontSize={{ base: "5xl", md: "7xl", lg: "2xl" }}
+          fontSize={{ base: "5xl", md: "7xl", lg: "3xl" }}
           my={{ base: "20px", md: "20px", lg: "none" }}
+          as={"u"}
+          color="red.800"
         >
           We are here to help you!
         </Text>
@@ -149,7 +151,7 @@ const Footer = () => {
           </li>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

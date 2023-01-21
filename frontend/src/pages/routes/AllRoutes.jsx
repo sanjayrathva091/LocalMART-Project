@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Admin from "./Admin";
+import Admin from "../Admin";
 import Cart from "../../components/Cart";
 import PrivateRoute from "./PrivateRoute";
 

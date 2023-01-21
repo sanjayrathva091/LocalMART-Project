@@ -16,8 +16,8 @@ const App = () => {
     
       <Navbar />
       <AllRoutes />
-      <Admin />
-      <Loader />
+      {/* <Admin /> */}
+      {/* <Loader /> */}
       <Footer />
     </div>
   );
