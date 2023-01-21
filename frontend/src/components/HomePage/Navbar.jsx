@@ -34,28 +34,6 @@ const Navbar = () => {
 
   return (
     <div>
-      {/* <Box border="1px" fontWeight={700}>
-        <Flex alignItems="center" justifyContent={"space-between"} gap={10}>
-          <Box>
-            <Link to="/">
-              <Box w="50%">
-                <Image src={logo} alt="logo" px={5} />
-              </Box>
-            </Link>
-          </Box>
-          <Box display={"flex"}>
-            <Link to="/">Building & Construction</Link>
-            <Spacer />
-            <Link to="/">Electronics & Electrical</Link>
-            <Spacer />
-            <Link to="/">Drugs & Pharma</Link>
-            <Link to="/">Login</Link>
-            <Link to="/admin">Admin</Link>
-            <Spacer />
-          </Box>
-        </Flex>
-      </Box> */}
-
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
