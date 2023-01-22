@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import AllRoutes from "./pages/routes/AllRoutes";
 import Navbar from "./components/HomePage/Navbar";
-// import Admin from "./pages/Admin";
+import Admin from "./pages/Admin";
 // import Register from "./components/Register-And-Login/Resgister";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       {/* <Register /> */}
       {/* <Navbar /> */}
       <AllRoutes />
-      {/* <Admin /> */}
+      <Admin />
       {/* <Loader /> */}
       {/* <Footer /> */}
       {/* <Register /> */}
