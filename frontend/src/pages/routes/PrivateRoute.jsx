@@ -2,13 +2,14 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  let token = localStorage.getItem("token") || false;
+  let tokenData = JSON.parse(localStorage.getItem("localmart")) || false;
+  let token = tokenData.token || false;
 
   if (token) {
-    return <Navigate to="/" />;
+    return children;
+  } else {
+    return <Navigate to="/login" />;
   }
-
-  return children;
 };
 
 export default PrivateRoute;

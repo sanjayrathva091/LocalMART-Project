@@ -7,10 +7,10 @@ const productSchema = mongoose.Schema(
     brand: { type: String, required: true },
     condition: { type: String, required: true },
     color: { type: String, required: true },
-    rating: { type: String, required: true },
     price: { type: String, required: true },
     discount_price: { type: String, required: true },
     image: { type: String, required: true },
+    description: { type: String, required: true },
     userID: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
   },
   {
