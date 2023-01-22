@@ -7,7 +7,9 @@ export const reducer = (state, action) => {
         }),
       };
     }
-  
+    if (action.type === "Product") {
+      return {...state,item:action.payload}
+    }
     if (action.type === "CLEAR_CART") {
       return { ...state, item: [] };
     }
