@@ -7,9 +7,9 @@
   font-family: Mulish;
 }
 
-/* html {
+html {
   font-size: 55.5%;
-} */
+}
 
 :root {
   --main-color: #333;
@@ -51,6 +51,7 @@ i {
   display: flex;
   height: inherit;
   align-items: center;
+  cursor: pointer;
 }
 
 .continue-shopping .arrow-icon {
