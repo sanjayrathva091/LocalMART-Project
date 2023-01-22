@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Cart from "./components/Cart";
 import Loader from "./components/Loader/Loader";
+import Register from "./components/Register And Login/Resgister";
 import Admin from "./pages/routes/Admin";
 
 const App = () => {
@@ -9,7 +10,8 @@ const App = () => {
     <div className="App">
       {/* <Cart /> */}
       <Admin />
-      <Loader />
+      {/* <Loader /> */}
+      <Register />
     </div>
   );
 };

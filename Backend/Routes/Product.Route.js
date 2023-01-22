@@ -10,9 +10,38 @@ productRouter.use(express.json());
 /* For Getting All The Products */
 
 productRouter.get("/", async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+  const { category, name } = req.query;
+  const count = await ProductModel.count();
+  let product;
   try {
-    const product = await ProductModel.find();
-    res.send(product);
+    product = await ProductModel.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+    if (category) {
+      product = await ProductModel.find({
+        category: { $regex: "^" + category, $options: "i" },
+      })
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .exec();
+    }
+    if (name) {
+      product = await ProductModel.find({
+        name: { $regex: "^" + name, $options: "i" },
+      })
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .exec();
+    }
+
+    res.send({
+      totalPages: Math.ceil(count / limit),
+      count,
+      currentPage: page,
+      product,
+    });
   } catch (error) {
     console.log(error);
   }
