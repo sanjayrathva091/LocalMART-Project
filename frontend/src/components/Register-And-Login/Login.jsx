@@ -38,13 +38,16 @@ const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      let res = await fetch("http://localhost:8080/users/login", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+      let res = await fetch(
+        "https://dull-lime-drill-veil.cyclic.app/users/login",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
 
       let resData = await res.json();
       if (res.status >= 400) {

@@ -8,7 +8,6 @@ import Loader from "./components/Loader/Loader";
 import Register from "./components/Register And Login/Resgister";
 import AllRoutes from "./pages/routes/AllRoutes";
 import Navbar from "./components/HomePage/Navbar";
-// import Admin from "./pages/Admin";
 // import Register from "./components/Register-And-Login/Resgister";
 
 const App = () => {
@@ -17,10 +16,10 @@ const App = () => {
       {/* <Cart /> */}
       {/* <Admin /> */}
       {/* <Loader /> */}
-    
-
-      {/* <AllRoutes /> */}
-      {/* <Admin /> */}
+      {/* <Register /> */}
+      {/* <Navbar /> */}
+      <AllRoutes />
+      <Admin />
       {/* <Loader /> */}
 
       <AllRoutes />
