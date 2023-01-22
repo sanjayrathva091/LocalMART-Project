@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
-import FilterComp from "../components/FilterComp";
 import SearchBar from "../components/SearchBar";
+import FilterComp from "../components/FilterComp";
+import ProductCard from "../components/ProductCard";
 
 const BuildingNConstructionProducts = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://dull-lime-drill-veil.cyclic.app/products?category=construction`
+      )
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <ProductPageWrapper>
       <section>
-        <SearchBar productName={"Plywoods"} />
+        <SearchBar productName={"Building & Construction"} />
       </section>
       <ProductDisplay>
         <FilterComp
           category={["Gold Plywood", "PVC Plywood"]}
           brand={["Centuryply Plywood ", "Greenply Plywood"]}
         />
-        <ProductList>{/* Add Products here or map it here */}</ProductList>
+        <ProductList>
+          {products.product.length > 0 &&
+            products.product.map((product) => {
+              return <ProductCard key={product._id} {...product} />;
+            })}
+        </ProductList>
       </ProductDisplay>
     </ProductPageWrapper>
   );
@@ -37,6 +55,10 @@ const ProductDisplay = styled.section`
 `;
 
 const ProductList = styled.div`
+  padding: 2em 2em;
   border: 1px solid black;
   border-radius: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 `;
