@@ -13,7 +13,7 @@ const ContextCart = () => {
         <header>
           <div className="continue-shopping">
             <img src="./images/arrow.png" alt="arrow" className="arrow-icon" />
-            <h3>continue shopping</h3>
+           <Link to="/"> <h3>continue shopping</h3></Link>
           </div>
 
           <div className="cart-icon">
@@ -57,7 +57,7 @@ const ContextCart = () => {
         <div className="cart-items">
           <div className="cart-items-container">
             <Scrollbars>
-              {item.map((curItem) => {
+              {item?.map((curItem) => {
                 return <Items key={curItem.id} {...curItem} />;
               })}
             </Scrollbars>
@@ -68,7 +68,7 @@ const ContextCart = () => {
           <h3>
             Cart Total : <span>{totalAmount}₹</span>
           </h3>
-         <Link to="/checkout"> <button>checkout</button> </Link>
+        <a href="https://paytm.com/"> <button>checkout</button></a>
           <button className="clear-cart" onClick={clearCart}>
             Clear Cart
           </button>

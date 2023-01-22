@@ -10,11 +10,13 @@ import {
   Electronics,
   pharma,
 } from "../../components/HomePage/Data";
+import Navbar from "../../components/HomePage/Navbar";
 
 const Home = () => {
   return (
     // Featured_Categories
     <div>
+      <Navbar />
       <HomeProduct
         heading="Building Construction Material & Equipment"
         poster={img1}

@@ -8,20 +8,22 @@ import Loader from "./components/Loader/Loader";
 import Register from "./components/Register And Login/Resgister";
 import AllRoutes from "./pages/routes/AllRoutes";
 import Navbar from "./components/HomePage/Navbar";
-import Footer from "./components/HomePage/Footer";
+// import Admin from "./pages/Admin";
+// import Register from "./components/Register-And-Login/Resgister";
 
 const App = () => {
   return (
     <div className="App">
       {/* <Cart /> */}
-      <Admin />
+      {/* <Admin /> */}
       {/* <Loader /> */}
-      {/* <Register /> */}
-      {/* <Navbar /> */}
+    
+
       {/* <AllRoutes /> */}
       {/* <Admin /> */}
       {/* <Loader /> */}
-      {/* <Footer /> */}
+
+      <AllRoutes />
     </div>
   );
 };

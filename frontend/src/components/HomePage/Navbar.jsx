@@ -21,6 +21,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link, NavLink } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import logo from "../../assets/localmart.png";
+import { useState } from "react";
 
 const Links = [
   { title: "Building & Construction", path: "/" },
@@ -31,6 +32,20 @@ const Links = [
 
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [refresh, setRefresh] = useState(true);
+  // const [email, setEmail] = useState("");
+  let tokenData = JSON.parse(localStorage.getItem("localmart")) || false;
+  let firstName = tokenData.firstName || null;
+  let lastName = tokenData.lastName || null;
+  let name = firstName + " " + lastName;
+  let email = tokenData.email || null;
+
+  const logout = () => {
+    localStorage.clear("localmart");
+    setRefresh(!refresh);
+  };
+
+  // setEmail(emailID);
 
   return (
     <Box position={"sticky"} top={0} left={0} zIndex={100} w="100%">
@@ -85,10 +100,16 @@ const Navbar = () => {
               </MenuButton>
               {/* it is use for dropdown options */}
               <MenuList>
-                <MenuItem>Name</MenuItem>
-                <MenuItem>Profile</MenuItem>
+                <MenuItem>{tokenData ? name : "Name"}</MenuItem>
+                <MenuItem>{email ? email : "Email"}</MenuItem>
                 <MenuDivider />
-                <MenuItem>Logout</MenuItem>
+                {tokenData ? (
+                  <MenuItem onClick={logout}>Logout</MenuItem>
+                ) : (
+                  <Link to="/login">
+                    <MenuItem>Login</MenuItem>
+                  </Link>
+                )}
               </MenuList>
             </Menu>
           </Flex>
