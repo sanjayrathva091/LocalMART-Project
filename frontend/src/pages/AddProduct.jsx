@@ -6,12 +6,15 @@ import {useToast}  from '@chakra-ui/react';
 // import { AdminAddProduct } from "../Redux/Admin/admin.actions";
 
 const init = {
-  title : "",
-  // stock : 0,
-  price : 0,
-  category : "",
-  image : "",
-  description : ""
+category : "",
+name : "",
+brand : "",
+condition : "",
+color : "",
+price : "",
+discount_price : "",
+image : "",
+description : ""
 }
 
 function AddProduct() {
@@ -26,6 +29,7 @@ function AddProduct() {
   const handleAdd = (e)=>{
     e.preventDefault();
     // dispatch(AdminAddProduct(detail.category,detail));
+    console.log(detail)
     setDetail(init);
     toast({
       description: "Product Added Successfully",
@@ -36,7 +40,7 @@ function AddProduct() {
     })
   }
 
-const {title,price,image,category,description} = detail;
+const {category,name,brand,condition,color,price,discount_price,image,description} = detail;
 
   return (
     <Box mt={5}>
@@ -45,11 +49,22 @@ const {title,price,image,category,description} = detail;
       <Box w='80%' margin='auto' border='1px solid gray' borderRadius={10} p={5} mt={5}>
           <FormControl>
             <FormLabel>Product Name</FormLabel>
-            <Input placeholder="Product name" name="title" value={title} onChange={handleChange}/>
-            {/* <FormLabel>Stock</FormLabel>
-            <Input placeholder="Number of Product" name="stock" value={stock} onChange={handleChange}/> */}
+            <Input placeholder="Product name" name="name" value={name} onChange={handleChange}/>
+            <FormLabel>Brand Name</FormLabel>
+            <Input placeholder="Product name" name="brand" value={brand} onChange={handleChange}/>
+            <FormLabel>Condition</FormLabel>
+            <Select placeholder="Select Condition" name="condition" value={condition} onChange={handleChange}>
+            <option value={"very good"}>Very Good</option>
+            <option value={"good"}>Good</option>
+            <option value={"average"}>Average</option>
+            <option value={"below average"}>Below Average</option>
+            </Select>
+            <FormLabel>Color</FormLabel>
+            <Input placeholder="Product name" name="color" value={color} onChange={handleChange}/>
             <FormLabel>Price</FormLabel>
             <Input placeholder="Product Price" name="price" value={price} onChange={handleChange}/>
+            <FormLabel>Discount Price</FormLabel>
+            <Input placeholder="Product Price" name="discount_price" value={discount_price} onChange={handleChange}/>
             <FormLabel>Category</FormLabel>
             <Select placeholder="Select category" name="category" value={category} onChange={handleChange}>
             <option value={"construction"}>Bulding & Construction</option>
@@ -78,5 +93,3 @@ const {title,price,image,category,description} = detail;
 }
 
 export default AddProduct;
-
-

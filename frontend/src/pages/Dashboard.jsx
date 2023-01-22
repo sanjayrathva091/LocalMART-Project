@@ -21,9 +21,17 @@ import { DownloadIcon, RepeatIcon } from "@chakra-ui/icons";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { ImCancelCircle } from "react-icons/im";
 import { MdPending } from "react-icons/md";
+import {useDispatch,useSelector} from "react-redux";
+import {GetOrder} from "../Redux/Admin/admin.actions";
 
 function Dashboard() {
-  
+  const {data,cancel,pending,process,delivered,total} = useSelector((store)=>store.admin);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(GetOrder());
+  },[])
+
   return (
     <Box mt={10}>
       <Heading>Dashboard</Heading>
@@ -39,7 +47,7 @@ function Dashboard() {
           >
             <Box>
               <Text>Opening Order</Text>
-              <Text>10</Text>
+              <Text>{data.length-delivered}</Text>
             </Box>
             <Box w="40px" h="40px" p={1}>
               <DownloadIcon boxSize={5} />
@@ -54,7 +62,7 @@ function Dashboard() {
           >
             <Box>
               <Text>Pending Order</Text>
-              <Text>10</Text>
+              <Text>{pending}</Text>
             </Box>
             <Box w="40px" h="40px" p={1}>
               <MdPending fontSize={26} />
@@ -69,7 +77,7 @@ function Dashboard() {
           >
             <Box>
               <Text>Cancel Order</Text>
-              <Text>10</Text>
+              <Text>{cancel}</Text>
             </Box>
             <Box w="40px" h="40px" p={1}>
               <ImCancelCircle fontSize={26} />
@@ -84,7 +92,7 @@ function Dashboard() {
           >
             <Box>
               <Text>Order In Proccess</Text>
-              <Text>10</Text>
+              <Text>{process}</Text>
             </Box>
             <Box w="40px" h="40px" p={1}>
               <RepeatIcon boxSize={5} />
@@ -99,7 +107,7 @@ function Dashboard() {
           >
             <Box>
               <Text>Total Income</Text>
-              <Text>₹10,000</Text>
+              <Text>₹{total}</Text>
             </Box>
             <Box w="40px" h="40px" p={1}>
               <GiTakeMyMoney fontSize={30} color="white" />
@@ -126,19 +134,20 @@ function Dashboard() {
               </Tr>
             </Thead>
             <Tbody>
-                <Tr>
-                  <Td>231</Td>
-                  <Td>23/01/2023</Td>
-                  <Td>pening</Td>
+            {data?.map((order) => (
+                <Tr key={order.id}>
+                  <Td>{order.id}</Td>
+                  <Td>{order.date}</Td>
+                  <Td>{order.Delivery_date}</Td>
                   <Td>
-                    {/* {
-                      'pending' === "pending"?<Badge colorScheme="orange">pending</Badge>:order.status === "cancel"?<Badge colorScheme="red">cancel</Badge>:order.status === "process"?<Badge colorScheme="blue">In process</Badge>:<Badge colorScheme="green">Delivered</Badge>
-                    } */}
-                    <Badge colorScheme="orange">pending</Badge>
+                    {
+                      order.status === "pending"?<Badge colorScheme="orange">pending</Badge>:order.status === "cancel"?<Badge colorScheme="red">cancel</Badge>:order.status === "process"?<Badge colorScheme="blue">In process</Badge>:<Badge colorScheme="green">Delivered</Badge>
+                    }
                   </Td>
-                  <Td>2000</Td>
-                  <Td>Cash</Td>
+                  <Td>{order.total}</Td>
+                  <Td>{order.payment_type}</Td>
                 </Tr>
+              ))}
             </Tbody>
           </Table>
         </TableContainer>
