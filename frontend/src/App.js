@@ -6,7 +6,6 @@ import Checkout from "./components/Checkout";
 import Admin from "./pages/Admin";
 import Loader from "./components/Loader/Loader";
 import Register from "./components/Register And Login/Resgister";
-import Admin from "./pages/routes/Admin";
 import AllRoutes from "./pages/routes/AllRoutes";
 import Navbar from "./components/HomePage/Navbar";
 import Footer from "./components/HomePage/Footer";
@@ -17,12 +16,12 @@ const App = () => {
       {/* <Cart /> */}
       <Admin />
       {/* <Loader /> */}
-      <Register />
-      <Navbar />
-      <AllRoutes />
+      {/* <Register /> */}
+      {/* <Navbar /> */}
+      {/* <AllRoutes /> */}
       {/* <Admin /> */}
       {/* <Loader /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
