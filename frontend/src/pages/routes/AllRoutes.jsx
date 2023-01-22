@@ -4,6 +4,9 @@ import Home from "./Home";
 import Admin from "../Admin";
 import Cart from "../../components/Cart";
 import PrivateRoute from "./PrivateRoute";
+import Register from "../../components/Register-And-Login/Resgister";
+import Login from "../../components/Register-And-Login/Login";
+import EmailVerify from "../../components/Register-And-Login/Email-Verify/EmailVerify";
 
 const AllRoutes = () => {
   return (
@@ -25,6 +28,9 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       ></Route>
+      <Route path="register" element={<Register />}></Route>
+      <Route path="login" element={<Login />}></Route>
+      <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
     </Routes>
   );
 };

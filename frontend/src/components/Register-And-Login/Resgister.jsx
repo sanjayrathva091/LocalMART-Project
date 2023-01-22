@@ -12,13 +12,15 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
   Select,
   FormErrorIcon,
+  Image,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import localmart from "../../assets/localmart.png";
 
 const initState = {
   first_name: "",
@@ -37,23 +39,49 @@ const initState = {
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initState);
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {
-    fetch("http://localhost:8080/users/register", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+  const handleSubmit = async () => {
+    try {
+      let res = await fetch("http://localhost:8080/users/register", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      let resData = await res.json();
+      if (res.status >= 400) {
+        toast({
+          description: resData.message,
+          status: "error",
+          duration: 1000,
+          isClosable: false,
+        });
+      } else {
+        toast({
+          description: resData.message,
+          status: "success",
+          duration: 1000,
+          isClosable: false,
+        });
+        navigate("/login");
+      }
+    } catch (error) {
+      toast({
+        description: error.message,
+        status: "error",
+        duration: 1000,
+        isClosable: false,
+      });
+    }
   };
 
   const getPincodeData = async (e) => {
@@ -90,6 +118,9 @@ const Register = () => {
           <Heading fontSize={"4xl"} textAlign={"center"}>
             Sign up
           </Heading>
+          <Link to="/">
+            <Image src={localmart} width={"100%"} height={"auto"} />
+          </Link>
         </Stack>
         <Box
           rounded={"lg"}
@@ -141,7 +172,7 @@ const Register = () => {
                 <FormControl id="gender" isRequired>
                   <FormLabel>Gender</FormLabel>
                   <Select
-                    placeholder="Select option"
+                    placeholder="Select Gender"
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
@@ -160,6 +191,7 @@ const Register = () => {
                   <Input
                     type="number"
                     name="phone"
+                    placeholder="Enter Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
                   />
@@ -171,6 +203,7 @@ const Register = () => {
                   <Input
                     type="text"
                     name="pincode"
+                    placeholder="Enter Pincode"
                     // value={formData.pincode}
                     onChange={getPincodeData}
                   />
@@ -182,6 +215,7 @@ const Register = () => {
               <Input
                 type="text"
                 name="address"
+                placeholder="Enter Your Address"
                 value={formData.address}
                 onChange={handleChange}
               />
@@ -193,6 +227,7 @@ const Register = () => {
                   <Input
                     type="text"
                     name="city"
+                    placeholder="Enter City"
                     value={formData.city}
                     // onChange={handleChange}
                   />
@@ -204,6 +239,7 @@ const Register = () => {
                   <Input
                     type="text"
                     name="state"
+                    placeholder="Enter State"
                     value={formData.state}
                     // onChange={handleChange}
                   />
@@ -215,6 +251,7 @@ const Register = () => {
               <Input
                 type="email"
                 name="email"
+                placeholder="Enter Your Email"
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -225,6 +262,7 @@ const Register = () => {
                 <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  placeholder="Enter 8 Digit Password"
                   value={formData.password}
                   onChange={handleChange}
                 />
@@ -254,9 +292,20 @@ const Register = () => {
                 Sign up
               </Button>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
+            <Stack pt={3} display={"flex"}>
+              <Text
+                align={"center"}
+                display={"flex"}
+                justifyContent={"center"}
+                gap={"4px"}
+                alignItems={"center"}
+              >
+                Already a user?
+                <Link to="/login">
+                  <Text color={"#138CF1"} textDecoration={"underline"}>
+                    Login
+                  </Text>
+                </Link>
               </Text>
             </Stack>
           </Stack>
