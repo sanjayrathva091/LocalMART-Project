@@ -1,9 +1,15 @@
 import React from "react";
 import "./App.css";
 import Cart from "./components/Cart";
+import { BrowserRouter as Router } from "react-router-dom";
+import Checkout from "./components/Checkout";
+import Admin from "./pages/Admin";
 import Loader from "./components/Loader/Loader";
 import Register from "./components/Register And Login/Resgister";
 import Admin from "./pages/routes/Admin";
+import AllRoutes from "./pages/routes/AllRoutes";
+import Navbar from "./components/HomePage/Navbar";
+import Footer from "./components/HomePage/Footer";
 
 const App = () => {
   return (
@@ -12,6 +18,11 @@ const App = () => {
       <Admin />
       {/* <Loader /> */}
       <Register />
+      <Navbar />
+      <AllRoutes />
+      {/* <Admin /> */}
+      {/* <Loader /> */}
+      <Footer />
     </div>
   );
 };

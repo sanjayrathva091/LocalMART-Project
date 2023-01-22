@@ -13,15 +13,27 @@ import {
   ListIcon,
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
-import poster from "../assets/poster.png";
-import poster2 from "../assets/poster2.png";
-import busy_indiamart_logo from "../assets/busy_indiamart_logo.png";
+import poster from "../../assets/poster.png";
+import poster2 from "../../assets/poster2.png";
+import busy_indiamart_logo from "../../assets/busy_indiamart_logo.png";
 
 const Poster = () => {
   return (
-    <div>
+    <Box
+      mt={14}
+      borderBottom={10}
+      borderStyle={"solid"}
+      borderColor={"gray.100"}
+    >
       {/* poster2 */}
-      <Flex justifyContent={"space-between"} m="auto " w="80%" textAlign="left">
+      <Flex
+        justifyContent={"space-between"}
+        m="auto "
+        w="80%"
+        textAlign="left"
+        my={"50px"}
+        flexDirection={{ base: "column", md: "column", lg: "row" }}
+      >
         <Box>
           <Box>
             <Image src={busy_indiamart_logo} alt="busy_indiamart_logo" />
@@ -30,7 +42,11 @@ const Poster = () => {
           <Text fontSize={"xl"}>
             Trusted by 3,60,000+ Small Businesses across different domains
           </Text>
-          <List spacing={3} mt="50px">
+          <List
+            spacing={3}
+            mt="50px"
+            textAlign={{ base: "center", md: "center", lg: "left" }}
+          >
             <ListItem>
               <ListIcon as={CheckIcon} color="green.500" />
               GST Accounting Software
@@ -49,17 +65,20 @@ const Poster = () => {
             </ListItem>
           </List>
         </Box>
-        <Box w={"30%"}>
+        <Box w={{ base: "70%", md: "50%", lg: "30%" }} m="auto">
           <Image src={poster2} alt="poster2" />
         </Box>
       </Flex>
       {/* poster1 */}
-      <Flex>
+      <Flex
+        flexDirection={{ base: "column", md: "column", lg: "row" }}
+        m={{ base: "auto" }}
+      >
         <Box>
-          <Image src={poster} alt="app-img" height={"80%"} mx="32" />
+          <Image src={poster} alt="app-img" w={"50%"} mx="32" />
         </Box>
-        <Box my={"50px"}>
-          <Heading textAlign={"left"}>Get IndiaMART App</Heading>
+        <Box my={"50px"} m={{ base: "auto" }}>
+          <Heading textAlign={"left"}>Get LocalMART App</Heading>
           <Text fontSize="md">
             Search for products/services and connect with verified sellers on
             the go!
@@ -95,7 +114,7 @@ const Poster = () => {
           </HStack>
         </Box>
       </Flex>
-    </div>
+    </Box>
   );
 };
 

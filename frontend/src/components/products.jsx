@@ -23,4 +23,5 @@ export const products = [
         price: 87,
         quantity: 1,
     },
+    
   ];

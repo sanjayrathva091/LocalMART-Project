@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 
 import { BsApple, BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
@@ -7,16 +7,24 @@ import { BiMobile } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <div>
+    <Box my={10}>
       <Flex
         textAlign={"center"}
         w={"80%"}
         m="auto"
-        justifyContent={"space-between"}
         my="30px"
+        justifyContent={"space-between"}
+        flexDirection={{ base: "column", md: "column", lg: "row" }}
       >
-        <Text fontSize="2xl">We are here to help you!</Text>
-        <Flex gap={"40px"}>
+        <Text
+          fontSize={{ base: "5xl", md: "7xl", lg: "3xl" }}
+          my={{ base: "20px", md: "20px", lg: "none" }}
+          as={"u"}
+          color="red.800"
+        >
+          We are here to help you!
+        </Text>
+        <Flex gap={"40px"} fontSize={{ base: "2xl", md: "4xl", lg: "md" }}>
           <Flex gap={"5px"} alignItems={"center"}>
             <Text>Go Mobile:</Text>
             <BsApple size={"1.5em"} />
@@ -35,7 +43,22 @@ const Footer = () => {
       </Flex>
 
       {/* bottom */}
-      <Flex w={"90%"} m="auto" justifyContent={"space-around"} textAlign="left">
+      <Box
+        w={"90%"}
+        m="auto"
+        display={"grid"}
+        gridTemplateRows={"auto"}
+        gridTemplateColumns={{
+          base: "repeat(1,1fr)",
+          sm: "repeat(1,fr)",
+          md: "repeat(2,1fr)",
+          lg: "repeat(4,1fr)",
+          xl: "repeat(5,1fr)",
+        }}
+        justifyContent={"space-around"}
+        textAlign="left"
+        fontSize={{ base: "4xl", md: "4xl", lg: "md" }}
+      >
         <Box listStyleType="none">
           <li>
             <a href="#">About Us</a>
@@ -127,8 +150,8 @@ const Footer = () => {
             <a href="#">GST e-Invoice</a>
           </li>
         </Box>
-      </Flex>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
