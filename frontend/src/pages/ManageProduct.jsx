@@ -18,30 +18,30 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { DeleteIcon ,EditIcon } from "@chakra-ui/icons";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   AdminGetProduct,
-//   AdminRemoveProduct,
-// } from "../Redux/Admin/admin.actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AdminGetProduct,
+  AdminRemoveProduct,
+} from "../Redux/Admin/admin.actions";
 
 function ManageProduct() {
-  // const Product_Data = useSelector((store) => store.admin.data);
+  const Product_Data = useSelector((store) => store.admin.data);
   const [category, setCategory] = React.useState("mobile");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
   };
 
   const handleDelete =(id)=>{
-    // dispatch(AdminRemoveProduct(category,id))
+    dispatch(AdminRemoveProduct(category,id));
   }
-  const handleEdit = (id) =>{
-    // dispatch(AdminRemoveProduct(category,id))
-  }
+  // const handleEdit = (id) =>{
+  //   // dispatch(AdminRemoveProduct(category,id))
+  // }
 
   React.useEffect(() => {
-    // dispatch(AdminGetProduct(category));
+    dispatch(AdminGetProduct(category));
   }, [category]);
   return (
     <Box mt={5}>
@@ -89,8 +89,7 @@ function ManageProduct() {
             <Box>
               <Text>Total Products</Text>
               <Text>
-                {/* {Product_Data.length} */}
-                10
+                {Product_Data.length}
               </Text>
             </Box>
           </Box>
@@ -109,38 +108,18 @@ function ManageProduct() {
               </Tr>
             </Thead>
             <Tbody>
-            <Tr>
-                  <Td>1232325245635yet</Td>
-                  <Td>play wood section</Td>
-                  <Td>
-                    <EditIcon onClick={()=>handleEdit(/*product_id*/)}/>
-                  </Td>
-                  <Td>
-                    <DeleteIcon onClick={()=>handleDelete(/*product_id*/)}/>
-                  </Td>
-                </Tr>
-                <Tr>
-                  <Td>879585453424dfv</Td>
-                  <Td>demo model 2</Td>
-                  <Td>
-                    <EditIcon onClick={()=>handleEdit(/*product_id*/)}/>
-                  </Td>
-                  <Td>
-                    <DeleteIcon onClick={()=>handleDelete(/*product_id*/)}/>
-                  </Td>
-                </Tr>
-              {/* {Product_Data?.map((product) => (
+              {Product_Data?.map((product) => (
                 <Tr key={product.id}>
                   <Td>{product.id}</Td>
                   <Td>{product.title}</Td>
                   <Td>
-                    <EditIcon onClick={()=>handleEdit(product_id)}/>
+                    <EditIcon onClick={()=>handleEdit(product.id)}/>
                   </Td>
                   <Td>
                     <DeleteIcon onClick={()=>handleDelete(product.id)}/>
                   </Td>
                 </Tr>
-              ))} */}
+              ))}
             </Tbody>
           </Table>
         </TableContainer>
