@@ -21,50 +21,52 @@ userRouter.post(
     body("last_name", "Please Enter Your Last Name").not().isEmpty(),
     body("age", "Please Enter Your Age").not().isEmpty(),
     body("gender", "Please Verify Your Gender").not().isEmpty(),
-    body("pincode", "Please Enter Your City Pincode").not().isEmpty(),
-    body("address", "Please Enter Your Address").not().isEmpty(),
-    body("city", "Please Enter Your City Name").not().isEmpty(),
-    body("state", "Please Enter Your State Name").not().isEmpty(),
-    body("country", "Please Enter Country Name").not().isEmpty(),
     body("phone", "Please Enter Valid Phone Number").isLength({
       min: 10,
       max: 10,
     }),
+    body("pincode", "Enter Correct City Pincode").isLength({
+      min: 6,
+      max: 6,
+    }),
+    body("address", "Please Enter Your Address").not().isEmpty(),
+    body("city", "Please Enter Your City Name").not().isEmpty(),
+    body("state", "Please Enter Your State Name").not().isEmpty(),
     body("email", "Please Enter A Valid Email Address").isEmail(),
     body("password", "Password Must Be 8 Characters").isLength({ min: 8 }),
   ],
   async (req, res) => {
-    /* Checking All The Fields Are Validate Or Not */
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(401).json({ errors: errors.array() });
-    }
-    const {
-      first_name,
-      last_name,
-      age,
-      gender,
-      pincode,
-      address,
-      city,
-      state,
-      country,
-      phone,
-      email,
-      password,
-      isUser,
-      isAdmin,
-      isVerified,
-    } = req.body;
+    try {
+      /* Checking All The Fields Are Validate Or Not */
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(401).json({ message: errors.array()[0].msg });
+      }
+      const {
+        first_name,
+        last_name,
+        age,
+        gender,
+        phone,
+        pincode,
+        address,
+        city,
+        state,
+        email,
+        password,
+        isUser,
+        isAdmin,
+        isVerified,
+      } = req.body;
 
-    /* Validate User */
-    let ValidatorUser = await UserModel.findOne({ email: email });
-    if (ValidatorUser) {
-      res.status(401).send({
-        message: "Please Enter Another Email This Email Is Already Exist!",
-      });
-    } else {
-      try {
+      /* Validate User */
+      let ValidatorUser = await UserModel.findOne({ email: email });
+      if (ValidatorUser) {
+        res.status(401).send({
+          message: "Please Enter Another Email This Email Is Already Exist!",
+        });
+      } else {
+        // try {
         /* Protect The User Password With The Help Of Bcrypt It Convert Your Password To Hash Password Which Is Stored In Our DataBase */
         bcrypt.hash(password, 8, async (err, hash_password) => {
           if (err) {
@@ -75,12 +77,11 @@ userRouter.post(
               last_name,
               age,
               gender,
+              phone,
               pincode,
               address,
               city,
               state,
-              country,
-              phone,
               email,
               password: hash_password,
               isUser,
@@ -94,16 +95,16 @@ userRouter.post(
               token: crypto.randomBytes(32).toString("hex"),
             }).save();
 
-            const url = `http://localhost:3000/users/${user._id}/verify/${token.token}`;
-            await sendEmail(user.email, "Verify Email", url);
+            const url = `${process.env.BASE_URL}/users/${user._id}/verify/${token.token}`;
+            await sendEmail(user.email, "Verify Email", url, user.first_name);
             res.send({
               message: "Please Check Your Mail To Verify Your Account!",
             });
           }
         });
-      } catch (error) {
-        console.log(error);
       }
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -177,7 +178,7 @@ userRouter.post(
       /* Checking Required Fields */
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(401).send({ errors: errors.array() });
+        return res.status(401).send({ message: errors.array()[0].msg });
       }
       /* We Are Checking Your Mail Is In DataBase Or Not */
       const user = await UserModel.findOne({ email });
@@ -194,11 +195,16 @@ userRouter.post(
                   token: crypto.randomBytes(32).toString("hex"),
                 }).save();
 
-                const url = `http://localhost:3000/users/${user._id}/verify/${token.token}`;
-                await sendEmail(user.email, "Verify Email", url);
+                const url = `${process.env.BASE_URL}/users/${user._id}/verify/${token.token}`;
+                await sendEmail(
+                  user.email,
+                  "Verify Email",
+                  url,
+                  user.first_name
+                );
               }
               return res.status(401).send({
-                message: "An Email Sent To Your Account Please Verify!",
+                message: "Before Login Please Verify Your Account!",
               });
             }
             /* Generate The Token With Help Of JWT It Gives You One Token When Ever User Is Login */
@@ -228,7 +234,7 @@ userRouter.post(
   }
 );
 
-/* For Getting The User Data And This Route Is Only Work For Admin Other People's Can't Use This Route */
+/** For Getting The User Data And This Route Is Only Work For Admin Other People's Can't Use This Route */
 
 userRouter.get("/", UserAuth, async (req, res) => {
   try {
@@ -262,35 +268,6 @@ userRouter.delete("/delete/:id", UserAuth, async (req, res) => {
     console.log(error);
   }
 });
-
-// /** Send reset password link*/
-
-// userRouter.post("/sent_reset_password", async (req, res) => {
-//   const { email } = req.body;
-//   if (email) {
-//     const user = await UserModel.findOne({ email: email });
-//     if (user) {
-//       const token = jwt.sign({ userID: user._id }, process.env.JWTKey, {
-//         expiresIn: "15m",
-//       });
-//       /** here you want link your fronted forget password page link */
-//       const link = `fronted-link/${user._id}/${token}`;
-//       console.log(link);
-//       res.send({
-//         message: "Password Reset Email Sent... Please Check Your Email",
-//         link,
-//       });
-//     } else {
-//       res.status(401).send({ message: "Email Doesn't Exists" });
-//     }
-//   } else {
-//     res.status(401).send({ message: "Email Field Is Required" });
-//   }
-// });
-
-/** User password reset with the help of link */
-
-// userRouter.post("/resetpassword", async (req, res) => {});
 
 module.exports = {
   userRouter,

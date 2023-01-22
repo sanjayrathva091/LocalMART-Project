@@ -1,24 +1,37 @@
 import React from "react";
 import Featured from "../../components/HomePage/Featured";
-import Navbar from "../../components/HomePage/Navbar";
 import Poster from "../../components/HomePage/Poster";
-import Footer from "../../components/HomePage/Footer";
+import HomeProduct from "../../components/HomePage/HomeProduct";
+import img1 from "../../assets/building-construction.jpg";
+import img2 from "../../assets/electronics-electrical-goods.jpg";
+import img3 from "../../assets/bigBn06.jpg";
+import {
+  construction,
+  Electronics,
+  pharma,
+} from "../../components/HomePage/Data";
+import Navbar from "../../components/HomePage/Navbar";
 
 const Home = () => {
-  //   Building Construction Material & Equipment
-  const construction = [
-    {
-      title: "Brick Making Machines",
-      d1: "Fly Ash Brick Making Machine",
-      d2: "Clay Brick Making Machine",
-      d3: "Cement Brick Making Machine",
-      src: "https://3.imimg.com/data3/RS/UH/GLADMIN-5385/brick-making-machines-125x125.jpg",
-    },
-  ];
-
   return (
     // Featured_Categories
     <div>
+      <Navbar />
+      <HomeProduct
+        heading="Building Construction Material & Equipment"
+        poster={img1}
+        arr={construction}
+      />
+      <HomeProduct
+        heading="Electronics & Electrical Goods & Supplies"
+        poster={img2}
+        arr={Electronics}
+      />
+      <HomeProduct
+        heading="Pharmaceutical Drug, Medicine, Medical Care & Consultation"
+        poster={img3}
+        arr={pharma}
+      />
       <Featured />
       {/* <Navbar /> */}
       <Poster />

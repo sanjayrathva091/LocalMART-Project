@@ -19,7 +19,12 @@ import busy_indiamart_logo from "../../assets/busy_indiamart_logo.png";
 
 const Poster = () => {
   return (
-    <div>
+    <Box
+      mt={14}
+      borderBottom={10}
+      borderStyle={"solid"}
+      borderColor={"gray.100"}
+    >
       {/* poster2 */}
       <Flex
         justifyContent={"space-between"}
@@ -109,7 +114,7 @@ const Poster = () => {
           </HStack>
         </Box>
       </Flex>
-    </div>
+    </Box>
   );
 };
 

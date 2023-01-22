@@ -21,6 +21,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link, NavLink } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import logo from "../../assets/localmart.png";
+import { useState } from "react";
 
 const Links = [
   { title: "Building & Construction", path: "/" },
@@ -31,31 +32,23 @@ const Links = [
 
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [refresh, setRefresh] = useState(true);
+  // const [email, setEmail] = useState("");
+  let tokenData = JSON.parse(localStorage.getItem("localmart")) || false;
+  let firstName = tokenData.firstName || null;
+  let lastName = tokenData.lastName || null;
+  let name = firstName + " " + lastName;
+  let email = tokenData.email || null;
+
+  const logout = () => {
+    localStorage.clear("localmart");
+    setRefresh(!refresh);
+  };
+
+  // setEmail(emailID);
 
   return (
-    <div>
-      {/* <Box border="1px" fontWeight={700}>
-        <Flex alignItems="center" justifyContent={"space-between"} gap={10}>
-          <Box>
-            <Link to="/">
-              <Box w="50%">
-                <Image src={logo} alt="logo" px={5} />
-              </Box>
-            </Link>
-          </Box>
-          <Box display={"flex"}>
-            <Link to="/">Building & Construction</Link>
-            <Spacer />
-            <Link to="/">Electronics & Electrical</Link>
-            <Spacer />
-            <Link to="/">Drugs & Pharma</Link>
-            <Link to="/">Login</Link>
-            <Link to="/admin">Admin</Link>
-            <Spacer />
-          </Box>
-        </Flex>
-      </Box> */}
-
+    <Box position={"sticky"} top={0} left={0} zIndex={100} w="100%">
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
@@ -65,7 +58,6 @@ const Navbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-
           <HStack spacing={8} alignItems={"center"}>
             <Box>
               <Link to="/">
@@ -86,7 +78,6 @@ const Navbar = () => {
               ))}
             </HStack>
           </HStack>
-
           {/* end of all links */}
           <Flex alignItems={"center"} gap={10}>
             <Link to="/cart">
@@ -109,10 +100,16 @@ const Navbar = () => {
               </MenuButton>
               {/* it is use for dropdown options */}
               <MenuList>
-                <MenuItem>Name</MenuItem>
-                <MenuItem>Profile</MenuItem>
+                <MenuItem>{tokenData ? name : "Name"}</MenuItem>
+                <MenuItem>{email ? email : "Email"}</MenuItem>
                 <MenuDivider />
-                <MenuItem>Logout</MenuItem>
+                {tokenData ? (
+                  <MenuItem onClick={logout}>Logout</MenuItem>
+                ) : (
+                  <Link to="/login">
+                    <MenuItem>Login</MenuItem>
+                  </Link>
+                )}
               </MenuList>
             </Menu>
           </Flex>
@@ -130,7 +127,7 @@ const Navbar = () => {
           </Box>
         ) : null}
       </Box>
-    </div>
+    </Box>
   );
 };
 
